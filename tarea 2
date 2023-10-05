@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Solicitar la cantidad de camisas y el precio de las camisas al usuario
+        Console.Write("Ingrese la cantidad de camisas que desea comprar: ");
+        int cantidadCamisas = int.Parse(Console.ReadLine());
+
+        Console.Write("Ingrese el precio de una camisa: ");
+        double precioCamisa = double.Parse(Console.ReadLine());
+
+        // Calcular el precio total sin descuento
+        double precioTotalSinDescuento = cantidadCamisas * precioCamisa;
+
+        // Calcular el descuento
+        double descuento = 0;
+
+        if (cantidadCamisas == 1)
+        {
+            // No hay descuento para una camisa
+            descuento = 0;
+        }
+        else if (cantidadCamisas >= 2 && cantidadCamisas <= 5)
+        {
+            // Aplicar un descuento del 15% para 2-5 camisas
+            descuento = precioTotalSinDescuento * 0.15;
+        }
+        else
+        {
+            // Aplicar un descuento del 20% para más de 5 camisas
+            descuento = precioTotalSinDescuento * 0.20;
+        }
+
+        // Calcular el precio final
+        double precioFinal = precioTotalSinDescuento - descuento;
+
+        // Mostrar el precio final al usuario
+        Console.WriteLine($"El precio final es: ${precioFinal:F2}");
+    }
+}
